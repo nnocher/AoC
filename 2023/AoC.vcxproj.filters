@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Challenges">
+      <UniqueIdentifier>{a1a1eeca-e488-4c6a-9927-6993facc2e83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Challenges">
+      <UniqueIdentifier>{4dda90a0-bd6c-476c-bbcf-9442b653d5eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Challenges">
+      <UniqueIdentifier>{5560920c-ef01-48e7-85cf-9288ecf54156}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Helper">
+      <UniqueIdentifier>{5296a81c-5efd-4cb0-8b5e-8c885f55983e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Helper">
+      <UniqueIdentifier>{fbd5a916-e69d-4a06-82f8-65d347b9bd9d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChallengeBase.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChallengeBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Globals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ChallengeTemplate.cpp">
+      <Filter>Source Files\Challenges</Filter>
+    </ClCompile>
+    <ClCompile Include="StringHelper.cpp">
+      <Filter>Source Files\Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="Challenge1.cpp">
+      <Filter>Source Files\Challenges</Filter>
+    </ClCompile>
+    <ClCompile Include="Challenge2.cpp">
+      <Filter>Source Files\Challenges</Filter>
+    </ClCompile>
+    <ClCompile Include="Challenge3.cpp">
+      <Filter>Source Files\Challenges</Filter>
+    </ClCompile>
+    <ClCompile Include="Challenge4.cpp">
+      <Filter>Source Files\Challenges</Filter>
+    </ClCompile>
+    <ClCompile Include="Challenge5.cpp">
+      <Filter>Source Files\Challenges</Filter>
+    </ClCompile>
+    <ClCompile Include="Challenge6.cpp">
+      <Filter>Source Files\Challenges</Filter>
+    </ClCompile>
+    <ClCompile Include="Challenge7.cpp">
+      <Filter>Source Files\Challenges</Filter>
+    </ClCompile>
+    <ClCompile Include="Challenge8.cpp">
+      <Filter>Source Files\Challenges</Filter>
+    </ClCompile>
+    <ClCompile Include="Challenge9.cpp">
+      <Filter>Source Files\Challenges</Filter>
+    </ClCompile>
+    <ClCompile Include="Challenge10.cpp">
+      <Filter>Source Files\Challenges</Filter>
+    </ClCompile>
+    <ClCompile Include="Challenge11.cpp">
+      <Filter>Source Files\Challenges</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Globals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Challenges.h">
+      <Filter>Header Files\Challenges</Filter>
+    </ClInclude>
+    <ClInclude Include="ChallengeTemplate.h">
+      <Filter>Header Files\Challenges</Filter>
+    </ClInclude>
+    <ClInclude Include="StringHelper.h">
+      <Filter>Header Files\Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="Challenge6.h">
+      <Filter>Header Files\Challenges</Filter>
+    </ClInclude>
+    <ClInclude Include="Challenge5.h">
+      <Filter>Header Files\Challenges</Filter>
+    </ClInclude>
+    <ClInclude Include="Challenge4.h">
+      <Filter>Header Files\Challenges</Filter>
+    </ClInclude>
+    <ClInclude Include="Challenge3.h">
+      <Filter>Header Files\Challenges</Filter>
+    </ClInclude>
+    <ClInclude Include="Challenge2.h">
+      <Filter>Header Files\Challenges</Filter>
+    </ClInclude>
+    <ClInclude Include="Challenge1.h">
+      <Filter>Header Files\Challenges</Filter>
+    </ClInclude>
+    <ClInclude Include="Challenge7.h">
+      <Filter>Header Files\Challenges</Filter>
+    </ClInclude>
+    <ClInclude Include="Challenge8.h">
+      <Filter>Header Files\Challenges</Filter>
+    </ClInclude>
+    <ClInclude Include="Challenge9.h">
+      <Filter>Header Files\Challenges</Filter>
+    </ClInclude>
+    <ClInclude Include="Challenge10.h">
+      <Filter>Header Files\Challenges</Filter>
+    </ClInclude>
+    <ClInclude Include="Challenge11.h">
+      <Filter>Header Files\Challenges</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Test.txt">
+      <Filter>Resource Files\Challenges</Filter>
+    </Text>
+    <Text Include="Challenge6.txt">
+      <Filter>Resource Files\Challenges</Filter>
+    </Text>
+    <Text Include="Challenge5.txt">
+      <Filter>Resource Files\Challenges</Filter>
+    </Text>
+    <Text Include="Challenge4.txt">
+      <Filter>Resource Files\Challenges</Filter>
+    </Text>
+    <Text Include="Challenge3.txt">
+      <Filter>Resource Files\Challenges</Filter>
+    </Text>
+    <Text Include="Challenge2.txt">
+      <Filter>Resource Files\Challenges</Filter>
+    </Text>
+    <Text Include="Challenge1.txt">
+      <Filter>Resource Files\Challenges</Filter>
+    </Text>
+    <Text Include="Challenge7.txt">
+      <Filter>Resource Files\Challenges</Filter>
+    </Text>
+    <Text Include="Challenge8.txt">
+      <Filter>Resource Files\Challenges</Filter>
+    </Text>
+    <Text Include="Challenge9.txt">
+      <Filter>Resource Files\Challenges</Filter>
+    </Text>
+    <Text Include="Challenge10.txt">
+      <Filter>Resource Files\Challenges</Filter>
+    </Text>
+    <Text Include="Challenge11.txt">
+      <Filter>Resource Files\Challenges</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
