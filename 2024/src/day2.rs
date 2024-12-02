@@ -18,41 +18,20 @@ pub fn run(challenge: i32) {
 }
 
 fn sample() {
-    let lines = read_file("day2_sample.txt");
-
-    let mut count = 0;
-    for line in lines {
-        if check_safety_dampened(line) == SAFETY_OK {
-            count = count + 1;
-        }
-    }
-
+    let count = read_file("day2_sample.txt")
+        .iter().filter(|line| check_safety_dampened(line) == SAFETY_OK).count();
     println!("{} reactors are safe.", count);
 }
 
 fn challenge1() {
-    let lines = read_file("day2_1.txt");
-
-    let mut count = 0;
-    for line in lines {
-        if check_safety(&line, NO_SKIP) == SAFETY_OK {
-            count = count + 1;
-        }
-    }
-
+    let count = read_file("day2_1.txt")
+        .iter().filter(|line| check_safety(line, NO_SKIP) == SAFETY_OK).count();
     println!("{} reactors are safe.", count);
 }
 
 fn challenge2() {
-    let lines = read_file("day2_1.txt");
-
-    let mut count = 0;
-    for line in lines {
-        if check_safety_dampened(line) == SAFETY_OK {
-            count = count + 1;
-        }
-    }
-
+    let count = read_file("day2_1.txt")
+        .iter().filter(|line| check_safety_dampened(line) == SAFETY_OK).count();
     println!("{} reactors are safe.", count);
 }
 
@@ -102,7 +81,7 @@ fn check_safety(data: &String, skip: i32) -> u8 {
     return SAFETY_OK;
 }
 
-fn check_safety_dampened(data: String) -> u8 {
+fn check_safety_dampened(data: &String) -> u8 {
     let level_count = data.split(" ").count() as i32;
 
     for i in -1..level_count {
