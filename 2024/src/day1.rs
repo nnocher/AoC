@@ -21,7 +21,7 @@ fn sample() {
 
 fn challenge1() {
     let lines = read_file("day1_1.txt");
-
+    
     let sum = count_distanes(lines);
     println!("The sum of all distances is {}", sum);
 }
