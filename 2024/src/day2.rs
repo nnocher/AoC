@@ -1,4 +1,5 @@
-use std::str::Split;
+use std::time::Instant;
+use rayon::prelude::*;
 
 use crate::helpers::read_file;
 
@@ -18,21 +19,28 @@ pub fn run(challenge: i32) {
 }
 
 fn sample() {
-    let count = read_file("day2_sample.txt")
-        .iter().filter(|line| check_safety_dampened(line) == SAFETY_OK).count();
+    let data = read_file("day2_sample.txt");
+    let count = data.par_iter().filter(|line| check_safety_dampened(line) == SAFETY_OK).count();
     println!("{} reactors are safe.", count);
 }
 
+
 fn challenge1() {
     let count = read_file("day2_1.txt")
-        .iter().filter(|line| check_safety(line, NO_SKIP) == SAFETY_OK).count();
+        .par_iter().filter(|line| check_safety(line, NO_SKIP) == SAFETY_OK).count();
     println!("{} reactors are safe.", count);
 }
 
 fn challenge2() {
-    let count = read_file("day2_1.txt")
-        .iter().filter(|line| check_safety_dampened(line) == SAFETY_OK).count();
+    let data = read_file("day2_1.txt");
+
+    let now = Instant::now();
+    
+    let count = data.par_iter().filter(|line| check_safety_dampened(line) == SAFETY_OK).count();
+    
+    let elapsed = now.elapsed();
     println!("{} reactors are safe.", count);
+    println!("Elapsed: {:.2?}", elapsed);
 }
 
 fn check_safety(data: &String, skip: i32) -> u8 {

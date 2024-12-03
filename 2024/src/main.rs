@@ -1,7 +1,6 @@
-use std::io;
-
 mod day1;
 mod day2;
+mod day3;
 
 mod helpers;
 
@@ -25,20 +24,21 @@ fn main() {
     //     .expect("Failed to read line");
     // let challenge = input.trim().parse::<i32>().unwrap();
     // ---
-    let day = 2;
+    let day = 3;
     let challenge = 2;
 
     println!("------------------------------");
     println!("Selected: Day {} Challenge {}", day, challenge);
     println!("------------------------------");
+
     run_day(day, challenge);
-    
 }
 
 fn run_day(day: i32, challenge: i32) {
     match day {
         1=> day1::run(challenge),
         2=> day2::run(challenge),
+        3=> day3::run(challenge),
         _=> println!("Day not found :(")
     }
 }
