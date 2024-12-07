@@ -29,7 +29,7 @@ fn main() {
     // let challenge = input.trim().parse::<i32>().unwrap();
     // ---
     let day = 7;
-    let challenge = 2;
+    let challenge = 1;
 
     println!("------------------------------");
     println!("Selected: Day {} Challenge {}", day, challenge);

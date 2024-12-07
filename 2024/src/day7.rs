@@ -2,6 +2,25 @@ use rayon::iter::*;
 
 use crate::helpers::read_file;
 
+static INVALID_INDEX_MASKS: &'static [u32] = &[
+    0b00000000000000000000000000000011,
+    0b00000000000000000000000000001100,
+    0b00000000000000000000000000110000,
+    0b00000000000000000000000011000000,
+    0b00000000000000000000001100000000,
+    0b00000000000000000000110000000000,
+    0b00000000000000000011000000000000,
+    0b00000000000000001100000000000000,
+    0b00000000000000110000000000000000,
+    0b00000000000011000000000000000000,
+    0b00000000001100000000000000000000,
+    0b00000000110000000000000000000000,
+    0b00000011000000000000000000000000,
+    0b00001100000000000000000000000000,
+    0b00110000000000000000000000000000,
+    0b11000000000000000000000000000000,
+];
+
 pub fn run(challenge: i32) {
     match challenge {
         0 => sample(),
@@ -13,7 +32,7 @@ pub fn run(challenge: i32) {
 
 fn sample() {
     let lines = read_file("day7_sample.txt");
-    let sum: u64 = lines.iter().map(|l| check_operation(l)).sum();
+    let sum: u64 = lines.par_iter().map(|l| check_operation(l)).sum();
     println!("The sum is {}", sum);
 }
 
@@ -27,7 +46,7 @@ fn challenge2() {
     let lines = read_file("day7_1.txt");
     let now = std::time::Instant::now();
 
-    let sum: u64 = lines.par_iter().map(|l| check_operation(l)).sum();
+    let sum: u64 = lines.par_iter().map(|l| check_operation2(l)).sum();
     
     let elapsed = now.elapsed();
     println!("The sum is {}", sum);
@@ -36,33 +55,19 @@ fn challenge2() {
 
 fn check_operation(op: &String) -> u64 {
     let (result, values) = read_operation(op);
-    let check_count = (1 << (values.len() * 2)) - 1;
+    let check_count = (1 << values.len()) - 1;
 
     for i in 0..check_count {
-        // check valid index
-        if !validate_index(i) {
-            continue;
-        }
-
         let run_result = values.iter().fold((0, 0), |(r, j), v| {
             // Operation flag consists of 2 bit.
-            // 00 -> +
-            // 01 -> *
+            // 0 -> +
+            // 1 -> *
             // 10 -> ||
-            let operation = if j == 0 {0} else {i >> ((j - 1) * 2) & 3};
-            if operation == 0 {
-                (r + *v as u64, j + 1)
-            }
-            else if operation == 1 {
-                (r * *v as u64, j + 1)
-            }
-            else if operation == 2 { // ||
-                let mut new_value = r.to_string();
-                new_value.push_str(&v.to_string());
-                let new = new_value.parse::<u64>().unwrap();
-                (new, j + 1)
-            } else {
-                (r, j + 1) // ??
+            let operation = if j == 0 {0} else {i >> ((j - 1)) & 1};
+            match operation {
+                0 => (r + *v as u64, j + 1),
+                1 => (r * *v as u64, j + 1),
+                _ => (r, j + 1) // ??
             }
         }).0;
 
@@ -74,22 +79,48 @@ fn check_operation(op: &String) -> u64 {
     return 0;
 }
 
-/**
- * Checks all bit pairs if they are a valid calculation flag.
- * Flag consists of 2 bits, valid values are 00, 01, and 10
- * 11 is not a valid flag.
- */
-fn validate_index(i: i32) -> bool {
-    for j in (0..32).step_by(2) {
-        if i >> j & 3 == 3 {
-            return false;
-        }
-        if 1 << j > i {
-            // Shortcut, unchecked bits are all 0
-            break;
+fn check_operation2(op: &String) -> u64 {
+    let (result, values) = read_operation(op);
+    let check_count = (1 << (values.len() * 2)) - 1;
+
+    for i in (0..check_count).filter(|i| validate_index(*i)) {
+        let run_result = values.iter().fold((0, 0), |(r, j), v| {
+            // Operation flag consists of 2 bit.
+            // 00 -> +
+            // 01 -> *
+            // 10 -> ||
+            let operation = if j == 0 {0} else {i >> ((j - 1) * 2) & 3};
+            match operation {
+                0 => (r + *v as u64, j + 1),
+                1 => (r * *v as u64, j + 1),
+                2 => {
+                    let mut new_value = r.to_string();
+                    new_value.push_str(&v.to_string());
+                    let new = new_value.parse::<u64>().unwrap();
+                    (new, j + 1)
+                }
+                _ => (r, j + 1) // ??
+            }
+        }).0;
+
+        if run_result == result {
+            return result;
         }
     }
 
+    return 0;
+}
+
+fn validate_index(i: u32) -> bool {
+    for m in INVALID_INDEX_MASKS {
+        if *m > i {
+            return true;
+        }
+        if i & m == *m {
+            return false;
+        }
+    }
+    
     return true;
 }
 
