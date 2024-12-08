@@ -5,6 +5,7 @@ mod day4;
 mod day5;
 mod day6;
 mod day7;
+mod day8;
 
 mod helpers;
 
@@ -28,8 +29,8 @@ fn main() {
     //     .expect("Failed to read line");
     // let challenge = input.trim().parse::<i32>().unwrap();
     // ---
-    let day = 7;
-    let challenge = 1;
+    let day = 8;
+    let challenge = 2;
 
     println!("------------------------------");
     println!("Selected: Day {} Challenge {}", day, challenge);
@@ -47,6 +48,7 @@ fn run_day(day: i32, challenge: i32) {
         5=> day5::run(challenge),
         6=> day6::run(challenge),
         7=> day7::run(challenge),
+        8=> day8::run(challenge),
         _=> println!("Day not found :(")
     }
 }
